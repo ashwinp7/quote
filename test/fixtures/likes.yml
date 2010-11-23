@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  num_likes: 1
+  note: 
+
+two:
+  num_likes: 1
+  note: 

@@ -1,0 +1,20 @@
+
+xml.instruct!
+xml.rss("version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/") do
+  xml.channel do
+    xml.title "Quotes forum"
+    xml.description "A forum for world famous quotes"
+    xml.link notes_url
+
+    for note in @notes
+      xml.item do
+        xml.title note.title
+		xml.author note.author
+        xml.description note.content
+        xml.pubDate note.created_at.to_s(:rfc822)
+        xml.link note_url(note)
+        xml.guid note_url(note)
+      end
+    end
+  end
+end

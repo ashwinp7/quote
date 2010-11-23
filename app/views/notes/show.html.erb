@@ -1,0 +1,68 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @note.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @note.content %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @note.year %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%= @note.author %>
+</p>
+
+<p>
+  <b>Genre:</b>
+  <%= @note.genre %>
+</p>
+
+<p><b> Tag List </b> 
+
+<% @note.tag_list.each do |tag| %>
+<%= link_to tag, :controller => "notes", :action => "result", :tags => tag %> 
+<%end%>
+</p>
+
+
+<h3>Comments</h3>
+<% @note.comments.each do |comment| %>
+  <p>
+    <b>Commenter:</b>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <b>Comment:</b>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<b>Add a comment:</b>
+<%= form_for([@note, @note.comments.build]) do |f| %>
+  
+
+  <div class="field">
+    <%= f.label :commenter %>: <%=h current_user.login %> <br/>
+	<%= f.hidden_field :commenter, :value => current_user.login %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Edit', edit_note_path(@note) %> |
+<%= link_to 'Back', notes_path %>

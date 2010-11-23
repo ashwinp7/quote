@@ -1,0 +1,18 @@
+xml.instruct! :xml, :version => "1.0"
+xml.rss :version => "2.0" do
+  xml.channel do
+    xml.title "Your Blog Title"
+    xml.description "A blog about software and chocolate"
+    xml.link notes_url
+
+    for note in @notes
+      xml.item do
+        xml.title note.title
+        xml.description note.content
+        xml.pubDate note.created_at.to_s(:rfc822)
+	    xml.link note_url(note)
+        xml.guid note_url(note)
+      end
+    end
+  end
+end

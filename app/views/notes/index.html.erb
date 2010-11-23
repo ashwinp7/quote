@@ -1,0 +1,51 @@
+<h1>Listing notes</h1>
+
+<table>
+  <tr>
+    <th>Owner</th>
+    <th>Title</th>
+	<th>Content</th>
+    <th>Year</th>
+    <th>Author</th>
+    <th>Genre</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @notes.each do |note| %>
+  <tr>
+    <td><%= note.owner %></td>
+    <td><%= note.title %></td>
+    <td><%= note.content %></td>
+    <td><%= note.year %></td>
+    <td><%= note.author %></td>
+    <td><%= note.genre %></td>
+
+    <td><%= link_to 'Show', note %></td>
+	<% if current_user.login == note.owner %>
+    <td><%= link_to 'Edit', edit_note_path(note) %></td>
+	<td><%= link_to 'Destroy', note, :confirm => 'Are you sure?', :method => :delete %></td>
+	<% end %>
+    
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Note', new_note_path %>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<%= link_to 'RSS Feed', :controller => "notes", :action => "rss" %>
+

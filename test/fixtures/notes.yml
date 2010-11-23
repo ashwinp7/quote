@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  content: MyText
+  year: 1
+  author: MyString
+  genre: MyString
+
+two:
+  title: MyString
+  content: MyText
+  year: 1
+  author: MyString
+  genre: MyString
